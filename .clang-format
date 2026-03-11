@@ -1,0 +1,12 @@
+# my preferred cpp style (K&R > allman)
+BasedOnStyle: Google
+IndentWidth: 4
+AccessModifierOffset: -4
+# IndentBraces: false
+
+# dont wrap my texts
+ColumnLimit: 0
+
+# prevent formatting of comments
+ReflowComments: false # dont wrap comments
+AlignTrailingComments: false # dont indent comments away from the code
