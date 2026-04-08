@@ -14,30 +14,9 @@ enum class Side {
     Sell
 };
 
-using Price = std::int32_t;
-using Quantity = std::uint32_t;
-using OrderId = std::uint64_t;
-
-struct LevelInfo {
-    Price price_;
-    Quantity Quantity_;
-};
-
-using LevelInfos = std::vector<LevelInfo>;
-
-class OrderBookLevelInfos {
-private:
-    LevelInfos bids_;
-    LevelInfos asks_;
-
-public:
-    OrderBookLevelInfos(const LevelInfos& asks, const LevelInfos& bids)
-        : bids_(bids),
-          asks_(asks) {}
-    
-    const LevelInfos& get_bids() const { return bids_; }
-    const LevelInfos& get_asks() const { return bids_; }
-};
+using Price = std::int32_t; // think about ticks
+using Quantity = std::uint32_t; // think about actual qty's that are in orders
+using OrderId = std::uint64_t; // think about reqs/s
 
 class Order {
 public:
@@ -119,10 +98,34 @@ private:
     TradeInfo ask_trade_;
 };
 
-class Orderbook {
+struct LevelInfo {
+    Price price_;
+    Quantity total_quantity_;
+};
+
+using LevelInfos = std::vector<LevelInfo>;
+
+class OrderBookLevelInfos {
+private:
+    LevelInfos bids_; // vector<LevelInfo>
+    LevelInfos asks_;
+
+public:
+    OrderBookLevelInfos(const LevelInfos& asks, const LevelInfos& bids)
+        : bids_(bids),
+          asks_(asks) {}
+    
+    const LevelInfos& get_bids() const { return bids_; }
+    const LevelInfos& get_asks() const { return asks_; }
+};
+
+class OrderBook {
     // TODO: 
 };
 
 int main() {
-    return 0;
+    // test
+    // #include <set>
+    // std::set s{1, 2, 3};
+    // s.contains(1);
 }
